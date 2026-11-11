@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffe8f2">
+  <meta name="description" content="A little birthday universe made with love for SUBA.">
+  <title>For SUBA — A Little Birthday Universe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Sacramento&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loader" class="loader"><div class="loader-heart">♡</div><p>Preparing your magic, Cutie…</p><div class="loader-track"><span></span></div></div>
+  <audio id="mainAudio" src="assets/main-background.mp3" loop preload="auto"></audio>
+  <audio id="voiceAudio" src="assets/voice-message.mp3" preload="auto"></audio>
+  <audio id="roseAudio" src="assets/rose-photo-song.mp3" preload="auto"></audio>
+  <audio id="blueAudio" src="assets/blue-saree-song.mp3" preload="auto"></audio>
+
+  <main id="app" class="hidden">
+    <section id="countdownScreen" class="screen active-screen">
+      <div class="floating-hearts" aria-hidden="true"></div>
+      <p class="eyebrow">A LITTLE MAGIC IS WAITING</p>
+      <h1>Something magical<br><em>is waiting for you, Cutie…</em></h1>
+      <div class="countdown" id="countdown"><div><b id="days">00</b><small>DAYS</small></div><div><b id="hours">00</b><small>HOURS</small></div><div><b id="minutes">00</b><small>MINUTES</small></div><div><b id="seconds">00</b><small>SECONDS</small></div></div>
+      <p class="date-note">A special day · 15 November 2026</p>
+      <button class="pink-button" id="beginButton">ENTER YOUR MAGIC <span>♡</span></button>
+      <p class="tiny-note">Tap once to begin the music</p>
+    </section>
+
+    <section id="doorScreen" class="screen">
+      <div class="door-glow"></div><div class="door-heart">♡</div>
+      <p class="eyebrow">A SECRET LITTLE DOOR</p>
+      <h2>Only a little magic<br>can open this door…</h2>
+      <label class="password-label" for="passwordInput">THE SECRET WORD</label>
+      <input id="passwordInput" class="password-input" type="password" placeholder="Enter the magic word" autocomplete="off">
+      <button class="pink-button" id="unlockButton">UNLOCK THE DOOR ✨</button>
+      <p id="passwordHint" class="hint" aria-live="polite">A little hint: her name holds the key.</p>
+    </section>
+
+    <section id="gardenScreen" class="screen garden-screen">
+      <div class="garden-sky"></div><div class="garden-moon"></div>
+      <div class="garden-tree tree-one">🌸</div><div class="garden-tree tree-two">🌸</div><div class="garden-tree tree-three">🌸</div>
+      <div class="garden-path"></div><div class="garden-pond"></div>
+      <div class="garden-bush bush-one">🌷 🌹 🌷</div><div class="garden-bush bush-two">🌹 🌸 🌹</div>
+      <div class="firefly-layer" id="fireflies"></div>
+      <div class="butterfly-layer" aria-hidden="true"><span>🦋</span><span>🦋</span><span>🦋</span><span>🦋</span></div>
+      <div class="garden-copy"><p class="eyebrow">A GARDEN MADE OF WISHES</p><h2>Welcome to your<br><em>little pink paradise</em></h2><p>Every flower here is wishing you the happiest birthday.</p><div class="suba-heart">♡ <strong>SUBA</strong> ♡</div><button class="pink-button" id="gardenContinue">FOLLOW THE HEART PATH <span>→</span></button></div>
+    </section>
+
+    <section id="roomScreen" class="screen room-screen">
+      <div class="room-lights"></div><div class="balloons"><i>🎈</i><i>🎈</i><i>🎈</i><i>🎈</i><i>🎈</i></div>
+      <div class="room-copy"><p class="eyebrow">TODAY IS ALL ABOUT YOU</p><h1>HAPPIEE BURDAY<br><em>CUTIEE</em> 💗</h1><p>Make a wish, Cutie. Your little celebration begins now.</p></div>
+      <div class="cake-area">
+        <div class="cake-spotlight"></div>
+        <div class="cake" id="cake"><div class="candles"><i class="candle lit"><b></b></i><i class="candle lit"><b></b></i><i class="candle lit"><b></b></i><i class="candle lit"><b></b></i><i class="candle lit"><b></b></i></div><div class="cake-top"></div><div class="cake-layer layer-top"></div><div class="cake-layer layer-bottom"></div><div class="cake-plate"></div><div class="cake-slice"></div></div>
+        <p id="cakeMessage" class="cake-message">Make a Wish, Cutie…</p>
+        <div class="cake-actions"><button class="pink-button" id="blowButton">1 · BLOW THE CANDLES</button><button class="pink-button" id="cutButton" disabled>2 · CUT THE CAKE</button><button class="pink-button" id="relightButton" disabled>3 · RELIGHT THE CANDLES</button></div>
+        <button id="micButton" class="text-button">Optional: try microphone blowing</button>
+      </div>
+      <button class="pink-button room-next" id="giftContinue" disabled>OPEN YOUR LITTLE GIFT ♡</button>
+    </section>
+
+    <section id="giftScreen" class="screen gift-screen">
+      <p class="eyebrow">A LITTLE SOMETHING, JUST FOR YOU</p><h2>One tiny gift<br><em>with a lot of love</em></h2>
+      <button id="giftBox" class="gift-box" aria-label="Open the birthday gift"><span class="gift-lid"></span><span class="gift-ribbon"></span><span class="gift-bow">♡</span><span class="gift-sparkles">✦ ✧ ✦</span></button>
+      <p id="giftCaption">Tap the gift to open your surprise</p>
+      <div id="giftReveal" class="gift-reveal hidden-block"><h3>Your first little note 💗</h3><div class="birthday-letter"><span class="letter-stamp">♡</span><p class="handwriting">HAPPIEE BURDAY, CUTIEE! 💗<br><br><p class="handwriting">Intha special day unakku romba happiness, love❤️, laughter ellame kondu varanum. Un smile☺️ eppovume ippadiye shine✨ aaganum. Nee dream panra ella nalla vishayangalum konjam konjama nadakkanum. Unakku neraya beautiful🦋 memories, sweet surprises, and endless reasons to smile kidaikkanum 🫶. Today and always, you deserve all the lovely things in the world ❤️.</p><p class="signature" style="text-align:center;">~ UNNA ENAKKU ROMBAA PUDIKKUM ❤️🫶</p></div><button class="pink-button" id="showAlbum">OPEN YOUR BIRTHDAY ALBUM →</button></div>
+    </section>
+
+    <section id="albumScreen" class="screen content-screen">
+      <p class="eyebrow">A LITTLE COLLECTION OF MOMENTS</p><h2>Birthday <em>Album</em> 📸</h2><p class="section-lead">Tap any photo to see it up close.</p>
+      <div class="album-grid" id="albumGrid">
+        <button class="album-photo" data-album="0"><img src="assets/album-1.jpg" alt="Birthday album photo 1"></button>
+        <button class="album-photo" data-album="1"><img src="assets/album-2.jpg" alt="Birthday album photo 2"></button>
+        <button class="album-photo" data-album="2"><img src="assets/album-3.jpg" alt="Birthday album photo 3"></button>
+        <button class="album-photo" data-album="3"><img src="assets/album-4.jpg" alt="Birthday album photo 4"></button>
+      </div>
+      <button class="pink-button" id="toSurprise">A LITTLE SURPRISE →</button>
+    </section>
+
+    <section id="surpriseScreen" class="screen content-screen">
+      <p class="eyebrow">JUST ONE MORE LITTLE THING</p><h2>A LITTLE <em>SURPRISE</em> 💗</h2>
+      <div class="surprise-actions"><button class="pink-button" id="readSurpriseLetter">READ YOUR LETTER</button><button class="pink-button secondary-button" id="seeSurprisePhotos">SEE YOUR PHOTOS</button></div>
+      <div id="surpriseLetter" class="surprise-letter hidden-block"><div class="letter-topline">A LITTLE NOTE FOR YOU ♡</div><p id="typewriterText" class="handwriting"></p><span class="letter-sign">♡</span></div>
+      <div id="surprisePhotos" class="surprise-photos hidden-block">
+        <button class="special-photo" data-special="0"><img src="assets/surprise-rose.jpg" alt="Rose colour dress photo"><span>♡</span></button>
+        <button class="special-photo" data-special="1"><img src="assets/surprise-blue.jpg" alt="Blue saree photo"><span>♡</span></button>
+      </div>
+      <button class="pink-button" id="toCute">CUTE MESSAGE FOR YOU →</button>
+    </section>
+
+    <section id="cuteScreen" class="screen content-screen cute-screen">
+      <p class="eyebrow">A FEW LITTLE WORDS</p><h2>CUTE MESSAGE <em>FOR YOU</em> 💗</h2>
+      <div class="cute-viewer"><button class="arrow-button" id="cutePrev" aria-label="Previous photo">‹</button><div class="cute-card"><img id="cuteImage" src="assets/cute-1.jpg" alt="Cute message photo"></div><button class="arrow-button" id="cuteNext" aria-label="Next photo">›</button></div>
+      <button class="pink-button" id="toVoice">A LITTLE VOICE FOR YOU →</button>
+      <button class="pink-button hidden-block" id="toFinal">SEE YOUR FINAL SURPRISE ✨</button>
+    </section>
+
+    <section id="voiceScreen" class="screen content-screen voice-screen">
+      <p class="eyebrow">A VOICE NOTE, JUST FOR YOU</p><h2>A Little <em>Voice</em> for You 🎙️</h2>
+      <div id="voiceCard" class="voice-card"><div class="voice-icon">♫</div><p>There’s something I wanted you to hear…</p><button class="pink-button" id="playVoice">PLAY MY VOICE MESSAGE</button><p id="voiceCount" class="voice-count">2 listens available</p><div class="voice-progress"><span id="voiceProgress"></span></div></div>
+      <p class="tiny-note">This voice message can be played only twice.</p>
+    </section>
+
+    <section id="finalScreen" class="screen final-screen">
+      <div class="final-fireworks" aria-hidden="true">✦ ✧ ✦ ✧ ✦</div><p class="eyebrow">ONE LAST LITTLE WISH</p><h1>Keep shining,<br><em>SUBA</em> 💗</h1><p>Eppovume happy-ah iru Cutie…<br>un smile ippadiye shine aaganum!</p><div class="final-name">♡ SUBA ♡</div><p class="made-with">Unakkaga special-ah create pannadhu, Cutie</p>
+    </section>
+  </main>
+
+  <div id="photoModal" class="modal" aria-hidden="true"><button class="modal-close" id="modalClose" aria-label="Close">×</button><button class="modal-arrow" id="modalPrev" aria-label="Previous">‹</button><img id="modalImage" alt="Selected photo"><button class="modal-arrow" id="modalNext" aria-label="Next">›</button></div>
+  <div id="specialModal" class="modal special-modal" aria-hidden="true"><button class="modal-close" id="specialClose" aria-label="Close">×</button><button class="modal-arrow" id="specialPrev" aria-label="Previous">‹</button><img id="specialImage" alt="Special photo"><button class="modal-arrow" id="specialNext" aria-label="Next">›</button></div>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
